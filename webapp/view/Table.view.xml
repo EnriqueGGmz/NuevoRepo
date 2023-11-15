@@ -12,7 +12,6 @@
 			<OverflowToolbar id="_IDGenOverflowToolbar1">
 				<content>
 				<Title id="_IDGenTitle1" text="Banco" level="H2"/>
-				<SearchField id="searchField" width="20%" placeholder="Hola" liveChange=".onSearch"/>	
 							</content>
 			</OverflowToolbar>
 		</headerToolbar>

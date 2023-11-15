@@ -7,7 +7,7 @@ sap.ui.define([
 	"sap/ui/model/FilterOperator",
 	"sap/ui/model/FilterType",
 
-], function(Formatter, Controller, JSONModel, Filter, FilterOperator,FilterType) 
+], function(Formatter, Controller, JSONModel, Filter, FilterOperator,FilterType){
 "use strict";
 
 
@@ -27,18 +27,9 @@ var TableController = Controller.extend("project1.controller.Table", {
 
         window.open('../documento/Transacción.pdf','_blank');
     },
-
-    onSearch : function () {
-        var oView = this.getView(),
-            sValue = oView.byId("searchField").getValue(),
-            oFilter = new Filter("OrderID", FilterOperator.Contains, sValue);
-
-        oView.byId("idProductsTable").getBinding("items").filter(oFilter, FilterType.Application);
-    },
-
 });
 
 
 return TableController;
 
-);
+});
