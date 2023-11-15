@@ -1,0 +1,148 @@
+{
+  "_version": "1.58.0",
+  "sap.app": {
+    "id": "project1",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.11.4",
+      "toolsId": "6ad0b9b7-5971-493f-babb-7aebe2763370"
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "Banco-Transanciones": {
+          "semanticObject": "Banco",
+          "action": "Transanciones",
+          "title": "{{flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    },
+    "dataSources": {
+      "invoiceRemote": {
+          "uri": "V2/Northwind/Northwind.svc/",
+          "type": "OData",
+          "settings": {
+              "odataVersion": "2.0"
+          }
+      }
+  }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.120.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "project1.i18n.i18n"
+        }
+      },
+      "invoice1": {
+        "dataSource": "invoiceRemote"
+    },
+    "invoice": {
+      "type": "sap.ui.model.json.JSONModel",
+      "uri": "https://dd62a279-0f1a-4f29-91a3-18d803c7d85b.mock.pstmn.io/v1/data"
+  }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "project1.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "RouteTable",
+          "pattern": ":?query:",
+          "target": [
+            "TargetTable"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetTable": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Table",
+          "viewName": "Table"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "project1.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    },
+    "config": {
+			"sample": {
+				"files": [
+					"Table.view.xml",
+					"Table.controller.js",
+					"Formatter.js",
+					"manifest.json"
+				]
+			}
+		}
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "project1"
+  }
+}
